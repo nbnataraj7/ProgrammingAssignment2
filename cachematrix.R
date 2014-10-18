@@ -45,23 +45,23 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
        # getting the inverse from the cached variable
-	res <- 	mcm$getInverse()
+	inverse   <- 	mcm$getInverse()
   
   # check whether inverse exists for this matrix
-  if(is.matrix(res))
+  if(is.matrix(inverse))
   {
     # Value exists and hence retrieved from 
     # the cached variable
     print("Getting the inverse of this matrix from cache")
-    return(res)
+    return(inverse)
   }
   # Inverse of this matrix is not caches and thus 
   # is computed now
-  res <- solve(mcm$get())
+  inverse <- solve(mcm$get())
   
   # cache the inverse for this matrix
   mcm$setInverse(res)
   
   # return inverse
-  res
+  inverse
 }
